@@ -10,22 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/colors.css">
     <link rel="stylesheet" href="styles/styles.css">    
-    <button style="visibility: hidden;" id="button_signup"></button>
-    <input id="password_check" style="visibility: hidden;">
+    <button style="visibility: hidden;" id="button_login"></button>
 </head>
 <body>
 <div style=" display: flex;justify-content: center;align-items: center;height: 100vh;"> 
 <div class="parent" ="background-color: #7E7D7D; width: auto; height: auto; display: flex;">  
     <div class="logo_big" >UniErrands</div>
-    <p style="font-weight: 600;">Login to Your Account</p>
+    <p style="font-weight: 600;">Create an Account</p>
     <p style="font-weight: 400;">Enter Username and Password</p>
     <input type="text" id="username" name="username" placeholder="Enter username">
     <input type="password" id="password" name="password" placeholder="Enter password">
-    <button id="button_login" type="button">Login</button>
+    <input type="password" id="password_check" name="password" placeholder="Renter password">
     <p style="color: var(--red);" id="warning"></p>
-    <p>New to UniErrands? </p>
-    <a href="signup.html">Click to Signup</a>
-
+    <button id="button_signup" type="button">Create Account</button>
+    <p>Already a user?</p>
+    <a href="login.html">Click to login</a>
   </div>
 
 </div>

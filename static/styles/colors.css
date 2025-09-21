@@ -9,5 +9,6 @@
   --text-color: #1b2635;                /* dark navy-gray for readability */
   --border-color: #b7c9da;              /* mid blue-gray border */
   --border-color-2: #8aa4bb;            /* stronger muted border */
-  --green: #5fa87c;                     /* toned-down teal-green for positive cues */
+  --green: #5fa87c;           
+  --red: #ff0000;          /* toned-down teal-green for positive cues */
 }

@@ -181,3 +181,23 @@ select{
 .parent button:active{
     background-color: var(--secondary-color);
 }
+.parent p{
+    margin-top: 20px;
+}
+.parent a{
+    margin: 0px;
+    color: var(--primary-color);
+}
+.warning_div{
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--background-color-card);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow:0px 0px 20px 0 rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
+    margin: 20px;
+    border: 1px solid var(--border-color);
+    z-index: 1000;
+}

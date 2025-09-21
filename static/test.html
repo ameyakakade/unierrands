@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Check Login</title>
+</head>
+<body>
+
+  <button id="check-login-btn">Check Login</button>
+
+  <script>
+    async function checkLogin() {
+      const response = await fetch("/api/me");  // GET request
+      if (!response.ok) {
+        console.log("Not logged in");
+        alert("Not logged in");
+        return;
+      }
+      const data = await response.json();
+      console.log("Current user:", data.username);
+      alert("Logged in as: " + data.username);
+    }
+
+    // Attach the function to the button
+    const button = document.getElementById("check-login-btn");
+    button.addEventListener("click", checkLogin);
+  </script>
+
+</body>
+</html>

@@ -1,11 +1,15 @@
-import sqlite3, hashlib
-
-def hash_password(password: str) -> str:
-    return hashlib.sha256(password.encode()).hexdigest()
+import sqlite3
 
 conn = sqlite3.connect("data/users.db")
 cursor = conn.cursor()
-cursor.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)",
-               ("tyler123", hash_password("mypassword")))
+
+# Delete all users
+cursor.execute("DELETE FROM users")
+
+# Reset the auto-increment counter
+cursor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
+
 conn.commit()
 conn.close()
+
+print("Users deleted and ID counter reset.")
