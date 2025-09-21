@@ -1,3 +1,31 @@
+import firebase_admin 
+from firebase_admin import credentials 
+
+cred = credentials.Certificate("auth/token.json") 
+firebase_admin.initialize_app(cred)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   /* Warm Light Mode */
   --primary-color: #474747;             /* coral/orange for buttons/links */
@@ -42,6 +70,12 @@
   --border-color-2: #5a4d48;            /* slightly stronger warm border */
   --green: #487928;                     /* soft sage green for success/positive cues */
 }
+
+
+
+
+
+
 
 
 :root {
