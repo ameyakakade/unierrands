@@ -1,12 +1,20 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+import sqlite3
+import hashlib
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static", html=True), name="static")
 
 # Counter variable
 counter = 0;
+
+def hash_password(password: str) -> str:
+    """Hash a password using SHA-256"""
+    return hashlib.sha256(password.encode()).hexdigest()
+
 
 class Message(BaseModel):
     message: str
@@ -21,8 +29,22 @@ async def increment_counter():
     counter += 1
     return {"value": counter}
 
-@app.post("/receive-string")
-async def receive_string(msg: Message):
-    print("Received from JS:", msg.message)
-    return {"response": f"You sent: {msg.message}"}
+class Request(BaseModel):
+    username: str
+    password: str
 
+@app.post("/api/send_string")
+def receive_string(req: Request):
+    conn = sqlite3.connect("data/users.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT password_hash FROM users WHERE username = ?", (req.username,))
+    result = cursor.fetchone()
+    conn.close()
+
+    if not result:
+        raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    if result[0] != hash_password(req.password):
+        raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    return {"message": "Login successful", "username": req.username}
