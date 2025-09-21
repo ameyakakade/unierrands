@@ -1,0 +1,75 @@
+:root {
+  /* Warm Light Mode */
+  --primary-color: #474747;             /* coral/orange for buttons/links */
+  --secondary-color: #424242;           /* light salmon for accents */
+  --background-color: #ffffff;          /* very light peach/cream background */
+  --background-color-navbar: rgba(243, 243, 243, 0.247); /* subtle translucent warm navbar */
+  --background-color-card: #ffffff;     /* soft warm card background */
+  --background-color-2: #ffd8b533;        /* secondary card background for contrast */
+  --text-color: #2c1b0b;                /* dark brown for strong readability */
+  --border-color:#dadada;
+  --border-color-2:#c4c4c4;
+  --green:#82db6c;
+} 
+
+
+
+:root {
+  /* Mild Warm Light Mode */
+  --primary-color: #633822;             /* muted terracotta for buttons/links */
+  --secondary-color: #8b634a;           /* soft warm peachy accent */
+  --background-color: #fdfaf6;          /* warm off-white with a cream tint */
+  --background-color-navbar: rgba(253, 247, 240, 0.75); /* creamy translucent navbar */
+  --background-color-card: #ffffff;     /* clean white for cards, keeps contrast */
+  --background-color-2: #f6e5d9;        /* pale beige/pastel background for contrast */
+  --text-color: #3a2a1a;                /* rich warm brown for readability */
+  --border-color: #e4d7cc;              /* light beige-gray border */
+  --border-color-2: #cbb8aa;            /* slightly deeper warm border */
+  --green: #2c4621;                     /* soft sage green for positive cues */
+}
+
+:root {
+  /* Mild Warm Dark Mode */
+  --primary-color: #dfb79d;             /* warm muted coral/terracotta for buttons/links */
+  --secondary-color: #d88c6a;           /* peachy accent for highlights */
+  --background-color: #1e1a18;          /* deep warm brown-black background */
+  --background-color-navbar: rgba(40, 34, 32, 0.459); /* warm translucent navbar */
+  --background-color-card: #272220;     /* slightly lighter card background */
+  --background-color-2: #332c29;        /* soft warm layer for contrast */
+  --text-color: #f2e6dc;                /* cream-colored text for readability */
+  --text-color-2: #b6a191;
+  --border-color: #3f3734;              /* subtle warm border */
+  --border-color-2: #5a4d48;            /* slightly stronger warm border */
+  --green: #487928;                     /* soft sage green for success/positive cues */
+}
+
+
+:root {
+  /* Darker Bluish Light Mode */
+  --primary-color: #2f5d91;             /* deeper blue for buttons/links */
+  --secondary-color: #4678a6;           /* muted lighter blue accent */
+  --background-color: #e9f0f7;          /* soft gray-blue background */
+  --background-color-navbar: rgba(220, 232, 245, 0.85); /* darker translucent bluish navbar */
+  --background-color-card: #f4f8fc;     /* slightly darker card background */
+  --background-color-2: #d6e3f0;        /* bluish-gray for contrast */
+  --text-color: #1b2635;                /* dark navy-gray for readability */
+  --border-color: #b7c9da;              /* mid blue-gray border */
+  --border-color-2: #8aa4bb;            /* stronger muted border */
+  --green: #5fa87c;                     /* toned-down teal-green for positive cues */
+}
+
+
+:root {
+  /* Darker Bluish Light Mode */
+  --primary-color: #2f5d91;             /* deeper blue for buttons/links */
+  --secondary-color: #4678a6;           /* muted lighter blue accent */
+  --background-color: #e9f0f7;          /* soft gray-blue background */
+  --background-color-navbar: rgba(220, 232, 245, 0.85); /* darker translucent bluish navbar */
+  --background-color-card: #f4f8fc;     /* slightly darker card background */
+  --background-color-2: #d6e3f0;        /* bluish-gray for contrast */
+  --text-color: #1b2635;                /* dark navy-gray for readability */
+  --border-color: #b7c9da;              /* mid blue-gray border */
+  --border-color-2: #8aa4bb;            /* stronger muted border */
+  --green: #5fa87c;                     /* toned-down teal-green for positive cues */
+}
+

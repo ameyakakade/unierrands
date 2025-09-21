@@ -1,0 +1,136 @@
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+	padding: none;
+	margin: none;
+	right: 0;
+	border: none;
+
+}
+.navbar {
+    position: fixed;
+    bottom: 20px;
+    left: 2.5%;
+    width: 95%;
+    background-color: var(--background-color-navbar);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 1000; /* keeps it above other elements */
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    height: 40px;
+    align-items: center;
+    border: 1px solid var(--border-color-2);
+}
+
+.navbar a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.card{
+    background-color: var(--background-color-card);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow:0px 0px 20px 0 rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
+    margin: 20px;
+    border: 1px solid var(--border-color);
+}
+.card p{
+    color: var(--secondary-color);
+}
+
+.heading{
+    position: fixed;
+    backdrop-filter: blur(20px);
+    padding: 15px;
+    border-radius: 0px 0px 40px 0px;
+    font-size: 25px;
+    top: 0;
+    margin: 0;
+    left: 0;
+    box-shadow:0 0 40px rgba(0, 0, 0, 0.151);
+    border: 1px solid var(--border-color-2);
+    background-color: var(--background-color-navbar);
+    z-index: 1000;
+    color: var(--white);
+}
+
+.logo{
+    margin-bottom: 5px;
+    font-family: 'Oswald', sans-serif; 
+    font-size: 30px;
+    
+}
+
+.link{
+    font-size: 18px;
+}
+
+.create{
+    position: fixed;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    left: 0;
+    border-radius: 30px 30px 0px 0px;
+    box-shadow:0px 0px 30px 0 rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    background-color: var(--background-color-card);
+}
+.create h1{
+    font-size: 25px;
+}
+.create p{
+    margin-right: 20px;
+}
+
+.map{
+    position: fixed;
+    width: 100%;
+    height: 52.5%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+input{
+    font-size: 15px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color-2);
+    padding: 7px;
+    background-color: var(--background-color-card);
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+button{
+    border-radius: 10px;
+    background-color: var(--background-color-card);
+    padding: 7px;
+    border: 1px solid var(--border-color-2);
+    font-size: 15px;
+    color: var(--primary-color);
+}
+
+select{
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid var(--border-color-2);
+    padding: 10px;
+    background-color: var(--background-color-card);
+    color: var(--primary-color);
+}
+.submit{
+    margin: 20px;
+    background-color: var(--green);
+    font-size: 20px;
+    color: var(--text-color);
+}
