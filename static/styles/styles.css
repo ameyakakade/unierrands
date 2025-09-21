@@ -1,7 +1,7 @@
 body {
 	background-color: var(--background-color);
 	color: var(--text-color);
-	font-family: "Montserrat", sans-serif;
+	font-family: "Poppins", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
@@ -133,4 +133,51 @@ select{
     background-color: var(--green);
     font-size: 20px;
     color: var(--text-color);
+}
+
+.logo_big{
+        width: 247px;
+        height: 57px;
+        text-align: center;
+        color: var(--text-color);
+        font-size: 48px;
+        font-family: Oswald;
+        font-weight: 600;
+        word-wrap: break-word;
+        margin: 30px;
+        margin-bottom: 60px;
+}
+.parent{
+    display: flex;
+    flex-direction: column; /* stack children vertically */
+    align-items: center;    /* center children horizontally */
+    width: 60%;
+       
+}
+.parent p{
+    margin: 5px;
+    font-family: "Poppins", sans-serif;
+}
+.parent input{
+    margin:5px;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+}
+.parent button{
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    border-radius: 20px;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    margin-top: 70px;
+    transition:0.1s ease;
+}
+.parent button:hover{
+    background-color: var(--green);
+    color: var(--text-color);
+    transition:0s;
+}
+.parent button:active{
+    background-color: var(--secondary-color);
 }
