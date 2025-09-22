@@ -70,7 +70,7 @@ buttonsignup.addEventListener("click", async () => {
     .then(data => {
         console.log("Server replied:", data);
         if (data.message === "User created successfully") {
-            console.log("Login was successful!");
+            console.log("Account creation was successful!");
             window.location.href = "create_success.html";
         // Do something on success, e.g., redirect or show a message
         } else if (data.detail === "Username already exists") {

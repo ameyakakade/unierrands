@@ -35,7 +35,8 @@ async def increment_counter():
 class RequestModel(BaseModel):  # CHANGED: renamed to avoid conflict with FastAPI Request
     username: str
     password: str
-
+class ErrandRequest(BaseModel):
+    startLocation: str
 # ---------------- LOGIN ----------------
 @app.post("/api/login")
 def login(req: RequestModel, request: Request):  # CHANGED: added 'request' parameter
@@ -87,3 +88,15 @@ def me(request: Request):  # ADDED
     if not user:  # ADDED
         raise HTTPException(status_code=401, detail="Not logged in")  # ADDED
     return {"username": user}  # ADDED
+
+@app.post("/api/errands")
+def get_errands(req:ErrandRequest):
+    startLoc=req.startLocation
+    print(startLoc)
+    conn = sqlite3.connect("data/users.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM errands WHERE startLocation = ?", (startLoc,))
+    errands = cursor.fetchall()
+    conn.close()
+
+    return [{"id": e[0], "user": e[1],"from":e[2],"to":e[3]} for e in errands]
