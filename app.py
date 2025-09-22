@@ -37,6 +37,13 @@ class RequestModel(BaseModel):  # CHANGED: renamed to avoid conflict with FastAP
     password: str
 class ErrandRequest(BaseModel):
     startLocation: str
+class CreateErrand(BaseModel):
+    startlocation: str
+    finallocation: str
+    task: str
+    description: str
+    endtime: str
+    runner: str
 # ---------------- LOGIN ----------------
 @app.post("/api/login")
 def login(req: RequestModel, request: Request):  # CHANGED: added 'request' parameter
@@ -100,3 +107,35 @@ def get_errands(req:ErrandRequest):
     conn.close()
 
     return [{"id": e[0], "user": e[1],"from":e[2],"to":e[3],"task":e[4],"description":e[5],"endtime":e[6],"runner":e[7]} for e in errands]
+
+@app.post("/api/errands/create")
+def create_errand(errand: CreateErrand, request: Request):
+    # Check if user is logged in
+    
+    user = request.session.get("user")
+    if not user:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+
+    try:
+        conn = sqlite3.connect("data/users.db")
+        cursor = conn.cursor()
+        cursor.execute("""
+            INSERT INTO errands (user, startlocation, finallocation, task, description, endtime, runner)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (
+            user,
+            errand.startlocation,
+            errand.finallocation,
+            errand.task,
+            errand.description,
+            errand.endtime,
+            errand.runner
+        ))
+        conn.commit()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to add errand: {e}")
+    finally:
+        conn.close()
+    print('created')
+    return {"message": "Errand created successfully"}

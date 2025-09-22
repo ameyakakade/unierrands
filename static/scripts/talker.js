@@ -19,7 +19,7 @@ async function incrementCounter() {
 incrementBtn.addEventListener("click", incrementCounter);
 logout.addEventListener("click", logOut);
 geterrands.addEventListener("click", loadErrands);
-document.getElementById("location").addEventListener("click", loadClosestLocation);
+document.getElementById("createErrandForm").addEventListener("click", createErrands);
 
 // Load initial counter
 fetchCounter();
@@ -104,88 +104,47 @@ async function logOut() {
     }
 
 
+async function createErrands() {
+    console.log('function runs');
+    const errand = {
+        startlocation: document.getElementById("from").value,
+        finallocation: document.getElementById("to").value,
+        task: document.getElementById("task").value,
+        description: document.getElementById("description").value,
+        endtime: 'none',
+        runner: 'none'
+    };
+    console.log(errand);
+    const messageDiv = document.getElementById("create-errand-message");
 
+    try {
+        const response = await fetch("/api/errands/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include", // important: send session cookies
+            body: JSON.stringify(errand)
+        });
 
+        const data = await response.json();
 
-
-// Haversine formula: distance in meters
-function getDistance(lat1, lng1, lat2, lng2) {
-    const R = 6371; // Earth's radius in km
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLng = (lng2 - lng1) * Math.PI / 180;
-    const a = 
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-        Math.sin(dLng/2) * Math.sin(dLng/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    const distanceKm = R * c;     // distance in km
-    return distanceKm * 1000;     // convert to meters
-}
-
-// Find closest location with minimum distance in meters
-function findClosest(currentLat, currentLng, locations, minDistanceM = 0) {
-    let closest = null;
-    let minDistance = Infinity;
-
-    locations.forEach(loc => {
-        const distance = getDistance(currentLat, currentLng, loc.lat, loc.lng);
-        if (distance < minDistance) {
-            minDistance = distance;
-            closest = loc;
+        if (response.ok) {
+            messageDiv.textContent = data.message;
+            document.getElementById("createErrandForm").reset();
+            // Optional: refresh errands list
+            if (typeof loadErrands === "function") loadErrands();
+        } else {
+            messageDiv.textContent = "Error: " + data.detail;
         }
-    });
-
-    if (minDistance > minDistanceM) {
-        console.log(`Closest location is farther than minimum distance (${minDistance.toFixed(0)} m)`);
-        return null; // no location is close enough
+    } catch (err) {
+        messageDiv.textContent = "Network error: " + err.message;
     }
+    window.location.href = "index.html";
+};
 
-    console.log(`Closest location: ${closest.name}, Distance: ${minDistance.toFixed(0)} m`);
-    return { ...closest, distanceM: minDistance }; // add distance to returned object
-}
-function loadClosestLocation() {
-    navigator.geolocation.getCurrentPosition(
-        position => {
-            const currentLat = position.coords.latitude;
-            const currentLng = position.coords.longitude;
-            console.log('Position obtained:', currentLat, currentLng);
 
-            fetch("locations.json")
-                .then(res => res.json())
-                .then(locations => {
-                    const minDistanceM = 5000; // 5 km
-                    const closest = findClosest(currentLat, currentLng, locations, minDistanceM);
 
-                    if (!closest) {
-                        console.log("No nearby locations within the minimum distance.");
-                    } else {
-                        console.log("Nearest location object:", closest);
-                    }
-                });
-        },
-        error => {
-            // Handle errors
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    console.error("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    console.error("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    console.error("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                default:
-                    console.error("An unknown error occurred.", error);
-                    break;
-            }
-        },
-        {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 0
-        }
-    );
-}
+
+
 

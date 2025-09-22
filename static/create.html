@@ -16,40 +16,54 @@
     <div id="warn"></div>
     <p class="heading">Create Errands</p>
     <div style="height: 80px;"></div>
-     <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7776.084228726404!2d79.156917!3d12.969157!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1758100482272!5m2!1sen!2sin" width="600" class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     
   </iframe>
 
     <div id="navbar"></div>
 
     <div class="create">
-    <div style="margin-left: 20px;">
+    <div class="create_div">
         <h1>Select the location on map</h1>
-    <div style="display: flex;
-    justify-content: flex-start;">
-        <p>From:</p>
-    <select id="from" name="from">
-        <option value="apple">SJT</option>
-        <option value="banana">PRP</option>
-        <option value="orange">TT</option>
+    
+    <select id="from" name="from" required>
+        <option value="" disabled selected>Select starting location</option>
+        <option value="sjt">SJT</option>
+        <option value="prp">PRP</option>
+        <option value="tt">TT</option>
+        <option value="dc">DC Cafe</option>
+        <option value="qblock">Q Block Men's Hostel</option>
     </select>
     <div style="width: 10%;"></div>
-        <p>To:</p>
-    <select id="from" name="from">
-        <option value="apple">SJT</option>
-        <option value="banana">PRP</option>
-        <option value="orange">TT</option>
+        
+    <select id="to" name="to" required>
+        <option value="" disabled selected>Select end location</option>
+        <option value="sjt">SJT</option>
+        <option value="prp">PRP</option>
+        <option value="tt">TT</option>
+        <option value="dc">DC Cafe</option>
+        <option value="qblock">Q Block Men's Hostel</option>
     </select>
     </div>
-
-    <h1>Enter the task to be done</h1>
-    <input type="text">
+    <div class="create_div">
+        <h1>Enter the task to be done</h1>
+        <input id="task" placeholder="Enter Task" type="text" required>
+    </div>
+    <div class="create_div" style="margin-bottom: 100px;">
+        <h1>Enter the description to be done</h1>
+        <input id="description" placeholder="Enter description" type="text" required>
+    </div>
+    <div class="create_div"><button id="createErrandForm" type="button"> Create!</button></div>
+    <p id="create-errand-message"></p>
+    <div style="visibility: hidden"> 
+        <p id="counter"></p>
+        <p id="incrementBtn"></p>
+        <p id="logoutbutton"></p>
+        <p id="get_errands"></p>
+        
+    </div>
     
-    <button>Upload Documents</button>
-    </div>
-    <button class="submit">Submit!</button>
-    </div>
-
-    <div style="height: 60px;"></div>
+</div>
+    
 <script src="scripts/talker.js"></script> 
 </body>
 </html>
