@@ -99,4 +99,4 @@ def get_errands(req:ErrandRequest):
     errands = cursor.fetchall()
     conn.close()
 
-    return [{"id": e[0], "user": e[1],"from":e[2],"to":e[3]} for e in errands]
+    return [{"id": e[0], "user": e[1],"from":e[2],"to":e[3],"task":e[4],"description":e[5],"endtime":e[6],"runner":e[7]} for e in errands]

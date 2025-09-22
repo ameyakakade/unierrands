@@ -78,8 +78,11 @@ async function logOut() {
         div.className = "card";
         
         // Create <h1> for main info (e.g., from → to)
-        const title = document.createElement("h1");
-        title.textContent = `${errand.from} → ${errand.to}`;
+        const task = document.createElement("h1");
+        task.textContent = `${errand.task}`;
+
+        const location = document.createElement("h3");
+        location.textContent = `${errand.from} → ${errand.to}`;
 
         // Create <p> for user
         const user = document.createElement("p");
@@ -87,10 +90,11 @@ async function logOut() {
 
         // Create <p> for id
         const id = document.createElement("p");
-        id.textContent = `ID: ${errand.id}`;
+        id.textContent = `Task: ${errand.description}`;
 
             // Append everything to the card
-        div.appendChild(title);
+        div.appendChild(task);
+        div.appendChild(location);
         div.appendChild(user);
         div.appendChild(id);
 
@@ -98,6 +102,12 @@ async function logOut() {
         console.log('Added a div');
       });
     }
+
+
+
+
+
+
 // Haversine formula: distance in meters
 function getDistance(lat1, lng1, lat2, lng2) {
     const R = 6371; // Earth's radius in km

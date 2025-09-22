@@ -43,7 +43,7 @@ body {
     margin: 20px;
     border: 1px solid var(--border-color);
 }
-.card h1{
+.card h3{
     text-transform: uppercase;
 }
 .card p{
